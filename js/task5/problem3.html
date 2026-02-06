@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         
+        .block {
+            text-align: center;
+           
+        }
+    
+        .block img {
+            display: block;
+            margin: 0 auto 20px auto;
+           
+        }
+    
+        .block button {
+            margin: 5px;
+           
+        }
+    </style>
+</head>
+<body>
+    
+
+   <div class="block">
+    <img id="myImage" src="" width="400" height="300"><br><br>
+    
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+    <button id="resetBtn">Reset</button>
+    
+    <script>
+
+        const images = [
+            "images/IMG-20250902-WA0313.jpg",
+            "images/food12.jpeg",
+            "images/home_bg.jpeg",
+            "images/IMG-20250902-WA0312.jpg"
+        ];
+
+
+        let currentIndex = 0;
+
+        const myImage = document.getElementById("myImage");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+
+        myImage.src = images[currentIndex];
+
+
+        nextBtn.onclick = function () {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            myImage.src = images[currentIndex];
+        }
+
+
+        prevBtn.onclick = function () {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            myImage.src = images[currentIndex];
+        }
+
+
+        resetBtn.onclick = function () {
+            currentIndex = 0;
+            myImage.src = images[currentIndex];
+        }
+    </script>
+   </div>
+</body>
+
+</html>
