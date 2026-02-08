@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById("output");
+
+        
+        function getUser(callback) {
+            setTimeout(() => {
+                const user = { id: 1, name: "Ahmed" };
+                output.innerHTML += "User loaded<br>";
+                callback(user);
+            }, 1000);
+        }
+
+        function getOrders(userId, callback) {
+            setTimeout(() => {
+                const orders = [
+                    { id: 101, item: "Laptop" },
+                    { id: 102, item: "Phone" }
+                ];
+                output.innerHTML += "Orders loaded<br>";
+                callback(orders);
+            }, 1000);
+        }
+
+        function getOrderDetails(orderId, callback) {
+            setTimeout(() => {
+                const details = { orderId: orderId, price: 500, status: "Shipped" };
+                output.innerHTML += "Details loaded<br>";
+                callback(details);
+            }, 1000);
+        }
+
+        
+        getUser(user => {
+            getOrders(user.id, orders => {
+                getOrderDetails(orders[0].id, details => {
+                    console.log("Final Details:", details);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
