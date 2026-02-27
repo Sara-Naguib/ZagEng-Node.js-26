@@ -34,3 +34,56 @@ SELECT * FROM students WHERE grade > 85;
 UPDATE students SET grade = 95 WHERE name = 'Omar Samir';
 
 SELECT * FROM students WHERE city = 'Cairo';
+
+CREATE TABLE courses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) NOT NULL,
+    instructor VARCHAR(100) NOT NULL,
+    hours INT CHECK (hours >= 10),
+    price DECIMAL(10, 2) CHECK (price >= 0),
+    level VARCHAR(50) DEFAULT 'Beginner',
+    start_date DATE
+);
+
+INSERT INTO courses (course_name, instructor, hours, price, level, start_date)
+VALUES
+('Database Basics', 'Ahmed Tarek', 30, 1200, 'Beginner', '2024-02-01'),
+('Web Development', 'Sara Ali', 45, 2000, 'Intermediate', '2024-03-10'),
+('Algorithms', 'Mona Samir', 40, 1800, 'Advanced', '2024-04-05'),
+('Networking', 'Omar Khaled', 35, 1500, 'Beginner', '2024-05-01');
+
+SELECT * FROM courses;
+SELECT course_name, instructor FROM courses;
+SELECT * FROM courses WHERE price > 1500;
+SELECT * FROM courses WHERE level = 'Beginner';
+SELECT * FROM courses WHERE hours BETWEEN 30 AND 40;
+SELECT * FROM courses WHERE hours BETWEEN 30 AND 40;
+UPDATE courses SET price = 2000 WHERE course_name = 'Algorithms';
+SELECT * FROM courses WHERE instructor LIKE '%a%';
+
+
+CREATE TABLE books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    book_name VARCHAR(150) NOT NULL,
+    author VARCHAR(150) NOT NULL,
+    pages INT CHECK (pages >= 50),
+    category VARCHAR(100) DEFAULT 'General',
+    price DECIMAL(10, 2) CHECK (price > 0),
+    publish_date DATE
+);
+
+INSERT INTO books (book_name, author, pages, category, price, publish_date)
+VALUES
+('Clean Code', 'Robert Martin', 450, 'Programming', 500, '2008-08-01'),
+('Atomic Habits', 'James Clear', 320, 'Self Development', 350, '2018-10-16'),
+('Deep Work', 'Cal Newport', 300, 'Productivity', 395, '2016-01-05'),
+('Design Patterns', 'GoF', 600, 'Programming', 300, '1994-10-21');
+
+SELECT * FROM books;
+SELECT book_name, author FROM books;
+SELECT * FROM books WHERE price < 400;
+SELECT * FROM books WHERE price < 400;
+SELECT * FROM books WHERE category = 'Programming';
+SELECT * FROM books WHERE pages BETWEEN 300 AND 500;
+UPDATE books SET price = 450 WHERE book_name = 'Deep Work';
+SELECT * FROM books WHERE book_name LIKE '%o%';
