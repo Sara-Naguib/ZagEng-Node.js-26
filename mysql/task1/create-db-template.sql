@@ -14,6 +14,13 @@ CREATE TABLE students (
     register_date DATE
 );
 
+SELECT *
+FROM students;
+
+SELECT  name
+FROM students
+LIMIT 3;
+
 INSERT INTO students (name, age, class, city, grade, gender, register_date)
 VALUES
 ('Ahmed Ali', 20, '1A', 'Cairo', 88, 'M', '2023-09-01'),

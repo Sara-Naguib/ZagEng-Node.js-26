@@ -1,0 +1,37 @@
+paart 1:
+
+use library
+db.createCollection("users")
+db.createCollection("books")
+
+part2:
+db.users.insertMany[{name:"sara" , role:"admin" , age:21},{name:"sama" , age:21 , role:"reader"},{name:"ali",age:20 , role:"assistant"} ,{name:"ahmed" , age:25,role:"admin"}]
+db.books.insertMany[{name:"book1" , pages:120},{name:"book2" ,pages:100},{name:"book3" , pages:200},{name:"book4" , pages:180}]
+
+part3: 
+db.users.find({age: {$gt: 21}})
+db.users.find({$or: [{age: {$lte: 21}} , {role:"admin"}     ]})
+db.users.find({age: {$in: [20,30] }})
+db.users.insertOne({name:"mohamed" , age:30 })
+
+db.users.insertOne({name:"mohamed" , age:30 })
+db.users.find({role: {$exists:false}})
+
+db.books.find({pages: {$gt:200}})
+db.books.find({$or:[{name:"mongo basics"},{pages: {$lt: 180}}]})
+
+db.books.find().sort({ pages: -1 }).limit(2)
+
+db.users.updateMany(
+  { age: { $lt: 21 } },
+  { $inc: { age: 1 } }
+)
+
+db.users.updateMany(
+  { role: "admin" },
+  { $set: { isActive: true } }
+)
+
+db.users.deleteMany({ age: { $lt: 18 } })
+
+db.books.deleteMany({ pages: { $lt: 150 } })
